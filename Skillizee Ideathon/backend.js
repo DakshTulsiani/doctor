@@ -11,7 +11,7 @@ app.use(express.static('public'));
 
 let otpStore = {};
 
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'dakshtulsiani1711@gmail.com',
@@ -110,3 +110,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log('Server running on port', PORT);
 });
+
