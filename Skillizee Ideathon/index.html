@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Affordable Healthcare For Everyone | From Adults To Kids</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Is healthcare too costly today? Serious injuries to family members can deplete a family's finances, leaving them struggling to afford basic necessities. But don't worry—HealthAccess is here to make essential healthcare solutions, like ECG machines and pulse oximeters, accessible and affordable for everyone. Curious to learn more? Visit our website for details!">
+</head>
+
+<body>
+    <section class="bods">
+        <div class="bod">
+            <nav class="navg horizontal-nav">
+                <div class="navbar">
+                    <div class="icon">
+                        <h1 class="ico">HealthAccess</h1>
+                    </div>
+                    <div class="nav">
+                        <ul class="hed">
+                            <li class="red redf"><a href="index.html" class="blue">Home</a></li>
+                            <li class="red"><a href="about.html" class="re">About Us</a></li>
+                            <li class="red"><a href="learn.html" class="re">What We Do</a></li>
+                            <li class="red"><a href="help.html" class="re">Help Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="hamburger-icon" id="hamburger">
+                <div class="bar"></div>
+                <div class="bard"></div>
+                <div class="bara"></div>
+            </div>
+
+
+
+            <div class="overlay" id="menuOverlay">
+                <nav class="vertical-nav">
+                    <ul class="hecs">
+                        <li><a href="index.html" class="cyan">Home</a></li>
+                        <li><a href="about.html" class="notcyan">About Us</a></li>
+                        <li><a href="learn.html" class="notcyan">What We Do</a></li>
+                        <li><a href="help.html" class="notcyan">Help Us</a></li>
+                        <li><a href="machine.html" class="notcyan">Machines</a></li>
+                        <li><a href="contact.html" class="notcyan">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header">
+                <h1 class="d">Healthcare Access For Everyone</h1>
+                <p class="alir">Have you ever had to repeat a medical test simply because you visited a different doctor
+                    who didn't have access to your previous records? With HealthAccess, that hassle is a thing of the
+                    past. Our platform allows authorized healthcare providers across India to securely access your
+                    medical records using just your registered email address. Click below to learn more about how we're
+                    making
+                    healthcare simpler and more connected.
+                </p>
+                <a href="#goal" class="cn btn">Our Goal</a>
+            </div>
+        </div>
+    </section>
+    <section class="goal">
+        <div id="goal">
+            <h1 class="mont">One Goal, One Solution</h1>
+            <p class="montp">Our goal is to create a website and app where only licensed doctors can
+                enter patients'
+                medical records on any electronic device. They start by opening the website, entering the patient's
+                email address, and confirming it with an OTP sent to that email. This allows access to the patient's
+                previous medical records, preventing the repetition of already conducted tests. For the current visit,
+                the doctor fills out an online health form for the patient, which is saved to the website under the same
+                registered email. Additionally, the doctor can generate a printout to provide a hard copy to the
+                patient, including the prescription for their current record.
+            </p>
+            <p class="cent"> Click on the button below to check your or your patient's(if you are a doctor) medical
+                records.</p>
+            <a href="form.html" class="cnbtn">Dashboard</a>
+        </div>
+    </section>
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const menuOverlay = document.getElementById("menuOverlay");
+        const horizontalNav = document.querySelector(".horizontal-nav");
+
+        // Toggle menu
+        const toggleMenu = () => {
+            hamburger.classList.toggle("active");
+            menuOverlay.classList.toggle("active");
+            horizontalNav.classList.toggle("hidden");
+        };
+
+        hamburger.addEventListener("click", toggleMenu);
+
+        menuOverlay.addEventListener("click", (e) => {
+            if (e.target === menuOverlay) {
+                toggleMenu();
+            }
+        });
+
+        window.onload = function () {
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+
+</html>

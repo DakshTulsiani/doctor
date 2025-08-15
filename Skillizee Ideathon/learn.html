@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Affordable Healthcare For Everyone | From Adults To Kids</title>
+    <link rel="stylesheet" href="sl.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Is healthcare too costly today? Serious injuries to family members can deplete a family's finances, leaving them struggling to afford basic necessities. But don't worry—HealthAccess is here to make essential healthcare solutions, like ECG machines and pulse oximeters, accessible and affordable for everyone. Curious to learn more? Visit our website for details!">
+</head>
+
+<body>
+    <section class="bods">
+        <div class="bod">
+            <nav class="navg horizontal-nav">
+                <div class="navbar">
+                    <div class="icon">
+                        <h1 class="ico">HealthAccess</h1>
+                    </div>
+                    <div class="nav">
+                        <ul class="hed">
+                            <li class="red redf"><a href="index.html" class="re">Home</a></li>
+                            <li class="red"><a href="about.html" class="re">About Us</a></li>
+                            <li class="red"><a href="learn.html" class="blue">What We Do</a></li>
+                            <li class="red"><a href="help.html" class="re">Help Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="hamburger-icon" id="hamburger">
+                <div class="bar"></div>
+                <div class="bard"></div>
+                <div class="bara"></div>
+            </div>
+
+
+
+            <div class="overlay" id="menuOverlay">
+                <nav class="vertical-nav">
+                    <ul class="hecs">
+                        <li><a href="index.html" class="notcyan">Home</a></li>
+                        <li><a href="about.html" class="notcyan">About Us</a></li>
+                        <li><a href="learn.html" class="cyan">What We Do</a></li>
+                        <li><a href="help.html" class="notcyan">Help Us</a></li>
+                        <li><a href="machine.html" class="notcyan">Machines</a></li>
+                        <li><a href="contact.html" class="notcyan">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header">
+                <h1 class="d">Healthcare Access<br><span class="hg">For Everyone</span></h1>
+                <p class="alir">Millions of people in India struggle to get the healthcare they need. We're changing
+                    that—bringing
+                    reliable medical machines within everyone's reach. Click below to see how we aim to save millions of
+                    lives.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            const hamburger = document.getElementById("hamburger");
+            const menuOverlay = document.getElementById("menuOverlay");
+            const horizontalNav = document.querySelector(".horizontal-nav");
+
+            // Function to toggle the menu state
+            const toggleMenu = () => {
+                hamburger.classList.toggle("active"); // Toggle hamburger icon animation
+                menuOverlay.classList.toggle("active"); // Show/hide overlay
+                horizontalNav.classList.toggle("hidden"); // Show/hide horizontal nav
+            };
+
+            // Event listener for hamburger icon click
+            hamburger.addEventListener("click", toggleMenu);
+
+            // Event listener to close the menu if clicking outside the vertical navigation links but within the overlay
+            menuOverlay.addEventListener("click", (e) => {
+                // If the clicked element is the overlay itself (not a child of the vertical nav)
+                if (e.target === menuOverlay) {
+                    toggleMenu(); // Close the menu
+                }
+            });
+        </script>
+    </section>
+</body>
+
+</html>

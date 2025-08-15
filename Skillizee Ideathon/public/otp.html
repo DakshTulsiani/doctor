@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Affordable Healthcare For Everyone | From Adults To Kids</title>
+    <link rel="stylesheet" href="sc.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Is healthcare too costly today? Serious injuries to family members can deplete a family's finances, leaving them struggling to afford basic necessities. But don't worry—HealthAccess is here to make essential healthcare solutions, like ECG machines and pulse oximeters, accessible and affordable for everyone. Curious to learn more? Visit our website for details!">
+</head>
+
+<body>
+    <h1>Enter OTP</h1>
+    <p>OTP sent to: <span id="showEmail"></span></p>
+
+    <form id="otpForm">
+        <label for="otpInput">Enter 6-digit OTP:</label>
+        <input type="number" id="otpInput" maxlength="6" required>
+        <button type="submit">Verify OTP</button>
+    </form>
+
+    <button onclick="resendOTP()">Resend OTP</button>
+
+    <!-- Load your JavaScript file -->
+    <script src="frontend.js"></script>
+
+    <!-- Connect everything -->
+    <script>
+        // Show email address
+        const email = localStorage.getItem('patientEmail');
+        document.getElementById('showEmail').textContent = email;
+
+        // Connect OTP form to function
+        document.getElementById('otpForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            verifyOTP(); // Call function from frontend.js
+        });
+    </script>
+</body>
+
+</html>
