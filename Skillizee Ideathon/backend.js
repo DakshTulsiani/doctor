@@ -1,7 +1,11 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
+
 const app = express();
 
+// Middleware
+app.use(cors()); // Important for Railway deployment
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -15,7 +19,7 @@ const transporter = nodemailer.createTransporter({
     }
 });
 
-// Send actual OTP
+// Send OTP
 app.post('/send-otp', async (req, res) => {
     const { email } = req.body;
     const otp = Math.floor(100000 + Math.random() * 900000);
@@ -43,6 +47,35 @@ app.post('/send-otp', async (req, res) => {
     } catch (error) {
         console.log('❌ Email error:', error.message);
         console.log('Error code:', error.code);
+        res.json({ success: false, message: error.message });
+    }
+});
+
+// Resend OTP (same as send-otp)
+app.post('/resend-otp', async (req, res) => {
+    const { email } = req.body;
+    const otp = Math.floor(100000 + Math.random() * 900000);
+
+    try {
+        console.log('Resending OTP to:', email);
+
+        await transporter.sendMail({
+            from: transporter.options.auth.user,
+            to: email,
+            subject: 'Your OTP Code (Resent)',
+            text: `Your new OTP is: ${otp}`
+        });
+
+        otpStore[email] = {
+            otp: otp,
+            expires: Date.now() + 5 * 60 * 1000
+        };
+
+        console.log('✅ OTP resent successfully!');
+        res.json({ success: true });
+
+    } catch (error) {
+        console.log('❌ Resend error:', error.message);
         res.json({ success: false, message: error.message });
     }
 });
