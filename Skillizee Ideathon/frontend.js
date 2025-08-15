@@ -1,3 +1,4 @@
+
 async function sendOTP() {
     const email = document.getElementById('patientEmail').value;
 
@@ -78,4 +79,5 @@ async function resendOTP() {
     } catch (error) {
         alert('Error resending OTP');
     }
+
 }
