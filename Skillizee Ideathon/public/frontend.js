@@ -1,11 +1,30 @@
+// Function to show styled messages instead of alerts
+function showMessage(text, type = 'info') {
+    const messageDiv = document.getElementById('message');
+    if (messageDiv) {
+        messageDiv.textContent = text;
+        messageDiv.className = `message ${type}`;
+        messageDiv.style.display = 'block';
+    }
+}
+
+// Function to hide messages
+function hideMessage() {
+    const messageDiv = document.getElementById('message');
+    if (messageDiv) {
+        messageDiv.style.display = 'none';
+    }
+}
 
 async function sendOTP() {
     const email = document.getElementById('patientEmail').value;
 
     if (!email.includes('@') || !email.includes('.')) {
-        alert('Please enter a valid email address!');
+        showMessage('Please enter a valid email address!', 'error');
         return;
     }
+
+    showMessage('Sending OTP... Please wait...', 'loading');
 
     try {
         const response = await fetch('/send-otp', {
@@ -19,14 +38,16 @@ async function sendOTP() {
 
         if (result.success) {
             localStorage.setItem('patientEmail', email);
-            alert('OTP sent! Check your email.');
-            window.location.href = 'otp.html';
+            showMessage('OTP sent! Check your email. Redirecting...', 'success');
+            setTimeout(() => {
+                window.location.href = 'otp.html';
+            }, 2000); // Redirect after 2 seconds
         } else {
-            alert('Server error: ' + result.message);
+            showMessage('Error: ' + result.message, 'error');
         }
     } catch (error) {
         console.log('Network error:', error);
-        alert('Network error: ' + error.message);
+        showMessage('Network error: ' + error.message, 'error');
     }
 }
 
@@ -35,9 +56,11 @@ async function verifyOTP() {
     const otp = document.getElementById('otpInput').value;
 
     if (!otp || otp.length !== 6) {
-        alert('Please enter a 6-digit OTP');
+        showMessage('Please enter a 6-digit OTP', 'error');
         return;
     }
+
+    showMessage('Verifying OTP...', 'loading');
 
     try {
         const response = await fetch('/verify-otp', {
@@ -49,18 +72,27 @@ async function verifyOTP() {
         const result = await response.json();
 
         if (result.success) {
-            alert('OTP Verified! Going to profiles...');
-            window.location.href = 'profiles.html';
+            showMessage('OTP Verified! Going to profiles...', 'success');
+            setTimeout(() => {
+                window.location.href = 'profiles.html';
+            }, 1500);
         } else {
-            alert(result.message);
+            showMessage(result.message, 'error');
         }
     } catch (error) {
-        alert('Error verifying OTP');
+        showMessage('Error verifying OTP', 'error');
     }
 }
 
 async function resendOTP() {
     const email = localStorage.getItem('patientEmail');
+
+    if (!email) {
+        showMessage('No email found. Please go back and enter email again.', 'error');
+        return;
+    }
+
+    showMessage('Resending OTP...', 'loading');
 
     try {
         const response = await fetch('/resend-otp', {
@@ -72,12 +104,11 @@ async function resendOTP() {
         const result = await response.json();
 
         if (result.success) {
-            alert('New OTP sent! Check your email.');
+            showMessage('New OTP sent! Check your email.', 'success');
         } else {
-            alert('Failed to resend OTP');
+            showMessage('Failed to resend OTP: ' + result.message, 'error');
         }
     } catch (error) {
-        alert('Error resending OTP');
+        showMessage('Error resending OTP', 'error');
     }
-
 }
