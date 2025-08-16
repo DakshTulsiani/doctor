@@ -33,7 +33,7 @@ app.post('/send-otp', async (req, res) => {
         await transporter.sendMail({
     from: transporter.options.auth.user,
     to: email,
-    subject: 'Medical Portal Access',
+    subject: 'Medical Records Access',
     html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2 style="color: #333; text-align: center;">Medical Portal Access</h2>
