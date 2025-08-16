@@ -31,11 +31,21 @@ app.post('/send-otp', async (req, res) => {
         console.log('To:', email);
 
         await transporter.sendMail({
-            from: transporter.options.auth.user,
-            to: email,
-            subject: 'Your OTP Code',
-            text: `Your OTP is: ${otp}`
-        });
+    from: transporter.options.auth.user,
+    to: email,
+    subject: 'Medical Portal Access',
+    html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #333; text-align: center;">Medical Portal Access</h2>
+            <p style="font-size: 16px; color: #666;">Your access code is:</p>
+            <div style="text-align: center; margin: 30px 0;">
+                <span style="font-size: 48px; font-weight: bold; color: #007bff; background: #f8f9fa; padding: 20px 30px; border-radius: 10px; letter-spacing: 8px;">${otp}</span>
+            </div>
+            <p style="color: #666; font-size: 14px;">This code expires in 5 minutes.</p>
+            <p style="color: #999; font-size: 12px;">If you didn't request this, please ignore this email.</p>
+        </div>
+    `
+});
 
         otpStore[email] = {
             otp: otp,
