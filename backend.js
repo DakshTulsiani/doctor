@@ -41,7 +41,7 @@ app.post('/send-otp', async (req, res) => {
             <div style="text-align: center; margin: 30px 0;">
                 <span style="font-size: 48px; font-weight: bold; color: #007bff; background: #f8f9fa; padding: 20px 30px; border-radius: 10px; letter-spacing: 8px;">${otp}</span>
             </div>
-            <p style="color: #666; font-size: 14px;">This code expires in 5 minutes.</p>
+            <p style="color: #666; font-size: 14px;">This code expires in 10 minutes.</p>
             <p style="color: #999; font-size: 12px;">If you didn't request this, please ignore this email.</p>
         </div>
     `
@@ -49,7 +49,7 @@ app.post('/send-otp', async (req, res) => {
 
         otpStore[email] = {
             otp: otp,
-            expires: Date.now() + 5 * 60 * 1000
+            expires: Date.now() + 10 * 60 * 1000
         };
 
         console.log('✅ Email sent successfully!');
