@@ -40,7 +40,7 @@ function showMedicalRecord() {
     const selectedProfile = dropdown.value;
     
     // Check if a valid profile is selected (not empty/disabled option)
-    if (selectedProfile && selectedProfile !== "") {
+    if (selectedProfile && selectedProfile !== "" && selectedProfile !== null) {
         // Store selected profile
         localStorage.setItem('selectedProfile', selectedProfile);
         
