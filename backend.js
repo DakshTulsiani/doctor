@@ -119,12 +119,24 @@ app.post('/verify-otp', (req, res) => {
     }
 
     // Check if OTP matches
-    if (storedData.otp.toString() === otp.toString()) {
-        delete otpStore[email]; // Clear used OTP
-        res.json({ success: true });
+   if (storedData.otp.toString() === otp.toString()) {
+    delete otpStore[email]; // Clear used OTP
+    
+    // Send different profiles based on email
+    if (email === 'dakshtulsiani1711@gmail.com') {
+        res.json({ 
+            success: true, 
+            profiles: ['Dr. Rajesh Sharma', 'Dr. Priya Patel', 'Dr. Amit Kumar', 'Dr. Sneha Gupta']
+        });
     } else {
-        res.json({ success: false, message: 'Invalid OTP' });
+        // Extract username from email (everything before @)
+        const username = email.split('@')[0];
+        res.json({ 
+            success: true, 
+            profiles: [username] // Just the username as profile
+        });
     }
+}
 });
 
 const PORT = process.env.PORT || 3000;

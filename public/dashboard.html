@@ -12,6 +12,25 @@
 </head>
 
 <body>
+    <select id="profileDropdown">
+    <option value="" selected disabled>Select a profile...</option>
+</select>
+<script>
+    window.onload = function() {
+    const profiles = JSON.parse(localStorage.getItem('availableProfiles')) || ['Default User'];
+    const dropdown = document.getElementById('profileDropdown');
+    
+    // Clear existing options except the first
+    dropdown.innerHTML = '<option value="">Select a profile...</option>';
+    
+    profiles.forEach(profile => {
+        const option = document.createElement('option');
+        option.value = profile;
+        option.textContent = profile;
+        dropdown.appendChild(option);
+    });
+}
+</script>
 </body>
 
 </html>
