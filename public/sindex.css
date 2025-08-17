@@ -1,0 +1,79 @@
+fieldset {
+    height: 50vh;
+    align-items: center;
+    width: 20vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    border-width: 0vw;
+    border-radius: 1vh;
+    position: relative;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 50%);
+}
+
+h1 {
+    text-align: center;
+    font-weight: 900;
+    font-size: 8vh;
+    font-style: bold;
+    justify-content: space-evenly;
+    margin-top: 2vh;
+}
+
+body {
+    background: linear-gradient(to top, rgba(24, 77, 71, 0.2), rgba(24, 77, 71, 0.8)), url(med.png);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+
+}
+
+label {
+    text-align: center;
+    font-size: 3.9vh;
+    color: lightblue;
+    cursor: text;
+    display: block;
+    font-weight: bold;
+    margin-top: 1vh;
+}
+
+input {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    height: 4vh;
+    width: 20vw;
+    border-radius: 2vh;
+    border: none;
+    font-size: 2.5vh;
+    padding-left: 1.2vw;
+}
+
+input::placeholder {
+    text-align: left;
+    font-size: 2.5vh;
+    position: relative;
+    vertical-align: bottom;
+}
+
+button {
+    font-size: 5vh;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #9ec8df;
+    font-weight: bold;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    margin-top: 25vh;
+    border-radius: 2vh;
+    transition: all 0.4s ease-in-out;
+}
+
+button:hover {
+    background: #ffffff;
+    color: #1b1b1b;
+}
