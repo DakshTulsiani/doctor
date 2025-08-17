@@ -1,48 +1,66 @@
 select {
     width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    padding: 1.4vh 1vw;
+    font-size: 1.5vh;
+    border: 0.2vh solid #ddd;
+    border-radius: 0.5vh;
+    margin-bottom: 1.8vh;
     box-sizing: border-box;
     cursor: pointer;
 }
 
 #medicalRecord {
     display: none;
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 41.7vw;
+    margin: 1.8vh auto;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    padding: 40px;
+    border-radius: 0.9vh;
+    box-shadow: 0 0.9vh 2.8vh rgba(0,0,0,0.3);
+    padding: 3.7vh 2.1vw;
 }
 
 .record-header {
     text-align: center;
     color: #333;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #667eea;
-    padding-bottom: 20px;
+    margin-bottom: 2.8vh;
+    border-bottom: 0.2vh solid #667eea;
+    padding-bottom: 1.8vh;
 }
 
 .medical-file {
     display: none; /* Hide by default */
     background: white;
-    border: 2px solid #667eea;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 300px;
+    border: 0.2vh solid #667eea;
+    border-radius: 0.9vh;
+    padding: 1.8vh 1vw;
+    margin: 1.8vh auto;
+    max-width: 15.6vw;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0.5vh 1.4vh rgba(0,0,0,0.1);
 }
 
 .file-icon {
-    font-size: 100px;
+    font-size: 9.3vh;
     color: #667eea;
-    margin-bottom: 20px;
+    margin-bottom: 1.8vh;
+}
+
+.medical-file:hover {
+    transform: translateY(-0.2vh);
+    box-shadow: 0 0.7vh 2.3vh rgba(0,0,0,0.2);
+    border-color: #764ba2;
+}
+
+.file-title {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0.5vh;
+    font-size: 1.8vh;
+}
+
+#fileName {
+    color: #666;
+    font-size: 1.5vh;
 }
