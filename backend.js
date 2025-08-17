@@ -36,8 +36,8 @@ app.post('/send-otp', async (req, res) => {
     subject: 'Medical Records Access',
     html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2 style="color: #333; text-align: center;">Medical Portal Access</h2>
-            <p style="font-size: 16px; color: #666;">Your access code is:</p>
+            <h2 style="color: #333; text-align: center;">Medical Records Access</h2>
+            <p style="font-size: 16px; color: #666;">Your OTP is:</p>
             <div style="text-align: center; margin: 30px 0;">
                 <span style="font-size: 48px; font-weight: bold; color: #007bff; background: #f8f9fa; padding: 20px 30px; border-radius: 10px; letter-spacing: 8px;">${otp}</span>
             </div>
@@ -73,13 +73,23 @@ app.post('/resend-otp', async (req, res) => {
         await transporter.sendMail({
             from: transporter.options.auth.user,
             to: email,
-            subject: 'Your OTP Code (Resent)',
-            text: `Your new OTP is: ${otp}`
+            subject: 'Medical Records Access(Resent OTP)',
+            html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #333; text-align: center;">Medical Records Access</h2>
+            <p style="font-size: 16px; color: #666;">Your Resent OTP is:</p>
+            <div style="text-align: center; margin: 30px 0;">
+                <span style="font-size: 48px; font-weight: bold; color: #007bff; background: #f8f9fa; padding: 20px 30px; border-radius: 10px; letter-spacing: 8px;">${otp}</span>
+            </div>
+            <p style="color: #666; font-size: 14px;">This code expires in 10 minutes.</p>
+            <p style="color: #999; font-size: 12px;">If you didn't request this, please ignore this email.</p>
+        </div>
+    `
         });
 
         otpStore[email] = {
             otp: otp,
-            expires: Date.now() + 5 * 60 * 1000
+            expires: Date.now() + 10 * 60 * 1000
         };
 
         console.log('✅ OTP resent successfully!');
