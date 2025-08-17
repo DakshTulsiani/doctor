@@ -72,9 +72,9 @@ async function verifyOTP() {
         const result = await response.json();
 
         if (result.success) {
-            showMessage('OTP Verified! Going to profiles...', 'success');
+            showMessage('OTP Verified! Redirecting to Dashboard...', 'success');
             setTimeout(() => {
-                window.location.href = 'profiles.html';
+                window.location.href = 'dashboard.html';
             }, 1500);
         } else {
             showMessage(result.message, 'error');
