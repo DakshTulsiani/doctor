@@ -1,0 +1,87 @@
+html {
+    height: 100vh;
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(to top, rgba(24, 77, 71, 0.5), rgba(24, 77, 71, 0.8)), url(med.png);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 14vh;
+    font-weight: 900;
+    margin: 0;
+}
+
+p {
+    text-align: center;
+    font-size: 3vh;
+    font-weight: 600;
+    margin-top: 2vh;
+}
+
+label {
+    font-size: 3vh;
+    font-weight: 400;
+    width: 100vw;
+    display: block;
+    text-align: center;
+    margin-top: 14vh;
+}
+
+input {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    height: 4svh;
+    width: 16vw;
+    border-radius: 1.2vh;
+    border: none;
+    font-size: 2.5vh;
+    text-align: center;
+}
+
+.btn1 {
+    font-size: 2.5vh;
+    background: transparent;
+    color: #9ec8df;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 1.2vh;
+    width: 9vw;
+    height: 3.8vh;
+    margin-top: 1vh;
+    transition: all .3s ease;
+}
+
+.btn2 {
+    font-size: 2.5vh;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #9ec8df;
+    font-weight: bold;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    border-radius: 1vh;
+    width: 9vw;
+    height: 3.8vh;
+    transition: all .3s ease;
+}
+
+button:hover {
+    background: #9ec8df;
+    color: #fff;
+}

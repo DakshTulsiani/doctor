@@ -16,12 +16,12 @@
     <p>OTP sent to: <span id="showEmail"></span></p>
 
     <form id="otpForm">
-        <label for="otpInput">Enter 6-digit OTP:</label>
-        <input type="number" id="otpInput" maxlength="6" required>
-        <button type="submit">Verify OTP</button>
+        <label for="otpInput">Enter 6-digit OTP Below</label><br>
+        <input type="tel" id="otpInput" maxlength="6" placeholder="Enter OTP" required><br>
+        <button type="submit" class="btn1">Verify OTP</button><br>
     </form>
-<div id="message" class="message" style="display: none;"></div>
-    <button onclick="resendOTP()">Resend OTP</button>
+    <div id="message" class="message" style="display: none;"></div>
+    <button onclick="resendOTP()" class="btn2">Resend OTP</button>
 
     <!-- Load your JavaScript file -->
     <script src="frontend.js"></script>
