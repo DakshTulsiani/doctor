@@ -39,7 +39,8 @@ function showMedicalFile() {
     const dropdown = document.getElementById('profileDropdown');
     const selectedProfile = dropdown.value;
     
-    if (selectedProfile) {
+    // Check if a valid profile is selected (not empty/disabled option)
+    if (selectedProfile && selectedProfile !== "") {
         // Store selected profile
         localStorage.setItem('selectedProfile', selectedProfile);
         
@@ -48,6 +49,9 @@ function showMedicalFile() {
         
         // Update file name
         document.getElementById('fileName').textContent = selectedProfile + " - Medical Record";
+    } else {
+        // Hide the medical file if disabled option is somehow selected
+        document.getElementById('medicalFile').style.display = 'none';
     }
 }
 
