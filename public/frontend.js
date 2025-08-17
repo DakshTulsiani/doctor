@@ -73,9 +73,9 @@ async function verifyOTP() {
 
         if (result.success) {
     localStorage.setItem('availableProfiles', JSON.stringify(result.profiles));
-    showMessage('OTP Verified! Going to profiles...', 'success');
+    showMessage('OTP Verified! Redirecting to Dashboard...', 'success');
     setTimeout(() => {
-        window.location.href = 'profiles.html';
+        window.location.href = 'dashboard.html';
     }, 1500);
 } else {
             showMessage(result.message, 'error');

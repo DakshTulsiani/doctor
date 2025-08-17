@@ -126,7 +126,7 @@ app.post('/verify-otp', (req, res) => {
     if (email === 'dakshtulsiani1711@gmail.com') {
         res.json({ 
             success: true, 
-            profiles: ['Dr. Rajesh Sharma', 'Dr. Priya Patel', 'Dr. Amit Kumar', 'Dr. Sneha Gupta']
+            profiles: ['Harish Kumar Tulsiani', 'Nisha Prithiani', 'Dhruv Tulsiani', 'Daksh Tulsiani']
         });
     } else {
         // Extract username from email (everything before @)
