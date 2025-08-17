@@ -12,15 +12,19 @@
 </head>
 
 <body>
-    <select id="profileDropdown" onchange="handleProfileSelection()">
+    <select id="profileDropdown" onchange="showMedicalRecord()">
     <option value="" selected disabled>Select a profile...</option>
 </select>
+<div id="medicalFile" class="medical-file" onclick="openMedicalRecord()">
+    <div class="file-icon">📋</div>
+    <div class="file-title">Medical Record</div>
+    <div id="fileName">Click to open</div>
+</div>
 <script>
     window.onload = function() {
     const profiles = JSON.parse(localStorage.getItem('availableProfiles')) || ['Default User'];
     const dropdown = document.getElementById('profileDropdown');
     
-    // Clear existing options except the first
     dropdown.innerHTML = '<option value="" selected disabled>Select a profile...</option>';
     
     profiles.forEach(profile => {
@@ -30,17 +34,25 @@
         dropdown.appendChild(option);
     });
 }
-function handleProfileSelection() {
+
+function showMedicalFile() {
     const dropdown = document.getElementById('profileDropdown');
     const selectedProfile = dropdown.value;
     
     if (selectedProfile) {
-        // Store the selected profile
+        // Store selected profile
         localStorage.setItem('selectedProfile', selectedProfile);
         
-        // Redirect to blank medical record page
-        window.location.href = 'medical-record.html';
+        // Show the medical file
+        document.getElementById('medicalFile').style.display = 'block';
+        
+        // Update file name
+        document.getElementById('fileName').textContent = selectedProfile + " - Medical Record";
     }
+}
+
+function openMedicalRecord() {
+    window.location.href = 'medical-record.html';
 }
 </script>
 </body>
