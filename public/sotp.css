@@ -85,3 +85,10 @@ button:hover {
     background: #9ec8df;
     color: #fff;
 }
+
+.message {
+    text-align: center;
+    position: relative;
+    font-size: 7vh;
+    margin-top: 10vh;
+}
