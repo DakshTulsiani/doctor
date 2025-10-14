@@ -1,6 +1,6 @@
 
 const express = require('express');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const cors = require('cors');
 
 const app = express();
@@ -12,13 +12,7 @@ app.use(express.static('public'));
 
 let otpStore = {};
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'dakshtulsiani1711@gmail.com',
-        pass: 'yvdv dqvf vzui hoqj'
-    }
-});
+const resend = new Resend('re_79Kfqut4_htyucgeckEqPKHZ5WUDnxgoL');
 
 // Send OTP
 app.post('/send-otp', async (req, res) => {
@@ -30,8 +24,8 @@ app.post('/send-otp', async (req, res) => {
         console.log('From:', transporter.options.auth.user);
         console.log('To:', email);
 
-        await transporter.sendMail({
-    from: transporter.options.auth.user,
+        await resend.emails.send({
+    from: 'onboarding@resend.dev',
     to: email,
     subject: 'Medical Records Access',
     html: `
@@ -46,7 +40,6 @@ app.post('/send-otp', async (req, res) => {
         </div>
     `
 });
-
         otpStore[email] = {
             otp: otp,
             expires: Date.now() + 10 * 60 * 1000
@@ -70,11 +63,11 @@ app.post('/resend-otp', async (req, res) => {
     try {
         console.log('Resending OTP to:', email);
 
-        await transporter.sendMail({
-            from: transporter.options.auth.user,
-            to: email,
-            subject: 'Medical Records Access(Resent OTP)',
-            html: `
+        await resend.emails.send({
+    from: 'onboarding@resend.dev',
+    to: email,
+    subject: 'Medical Records Access (Resent OTP)',
+    html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2 style="color: #333; text-align: center;">Medical Records Access</h2>
             <p style="font-size: 16px; color: #666;">Your Resent OTP is:</p>
@@ -85,7 +78,7 @@ app.post('/resend-otp', async (req, res) => {
             <p style="color: #999; font-size: 12px;">If you didn't request this, please ignore this email.</p>
         </div>
     `
-        });
+});
 
         otpStore[email] = {
             otp: otp,
