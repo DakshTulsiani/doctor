@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 let otpStore = {};
 
-sgMail.setApiKey('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');
+sgMail.setApiKey('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');
 
 // Send OTP
 app.post('/send-otp', async (req, res) => {
@@ -134,5 +134,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log('Server running on port', PORT);
 });
+
 
 
