@@ -21,7 +21,6 @@ app.post('/send-otp', async (req, res) => {
 
     try {
         console.log('Trying to send email...');
-        console.log('From:', transporter.options.auth.user);
         console.log('To:', email);
 
         await resend.emails.send({
