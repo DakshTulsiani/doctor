@@ -2,7 +2,7 @@
 const express = require('express');
 const sgMail = require('@sendgrid/mail');
 const cors = require('cors');
-
+const api_key_here = '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';
 const app = express();
 
 // Middleware
@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 let otpStore = {};
 
-sgMail.setApiKey('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');
+sgMail.setApiKey(api_key_here);
 
 // Send OTP
 app.post('/send-otp', async (req, res) => {
@@ -134,6 +134,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log('Server running on port', PORT);
 });
+
 
 
 
