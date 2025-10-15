@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { Resend } = require('resend');
+const sgMail = require('@sendgrid/mail');
 const cors = require('cors');
 
 const app = express();
@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 let otpStore = {};
 
-const resend = new Resend('re_79Kfqut4_htyucgeckEqPKHZ5WUDnxgoL');
+sgMail.setApiKey('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');
 
 // Send OTP
 app.post('/send-otp', async (req, res) => {
@@ -23,9 +23,9 @@ app.post('/send-otp', async (req, res) => {
         console.log('Trying to send email...');
         console.log('To:', email);
 
-        await resend.emails.send({
-    from: 'onboarding@resend.dev',
+        await sgMail.send({
     to: email,
+    from: 'dakshtulsiani1711@gmail.com',
     subject: 'Medical Records Access',
     html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -62,9 +62,9 @@ app.post('/resend-otp', async (req, res) => {
     try {
         console.log('Resending OTP to:', email);
 
-        await resend.emails.send({
-    from: 'onboarding@resend.dev',
+        await sgMail.send({
     to: email,
+    from: 'dakshtulsiani1711@gmail.com',
     subject: 'Medical Records Access (Resent OTP)',
     html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -78,7 +78,6 @@ app.post('/resend-otp', async (req, res) => {
         </div>
     `
 });
-
         otpStore[email] = {
             otp: otp,
             expires: Date.now() + 10 * 60 * 1000
